@@ -1,0 +1,90 @@
+- BOUTON DEMARRER
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread",
+  "call_to_actions":[
+    {
+      "payload":"STARTED_PAYLOAD"
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAABvHLK66ZCQBAFOmsXbgYWdOVvnzbZA1QnASnGx4tV8B4uxkGFeqgcep5ZA6rwuppnKdfpzjvGzK2IZATFlKNkTZAD3PQ3AyRizn4oeFcXzgR9AbmtCYEZAZB1Vy0BYJMk8NMPcGDegH5nIdLLM1ZBSr42KLZBRaOZAwYBqUnZBK6fngZDZD"
+
+- SUPPRIMER BOUTON DEMARRER
+
+curl -X DELETE -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread"
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAABvHLK66ZCQBAFOmsXbgYWdOVvnzbZA1QnASnGx4tV8B4uxkGFeqgcep5ZA6rwuppnKdfpzjvGzK2IZATFlKNkTZAD3PQ3AyRizn4oeFcXzgR9AbmtCYEZAZB1Vy0BYJMk8NMPcGDegH5nIdLLM1ZBSr42KLZBRaOZAwYBqUnZBK6fngZDZD"
+
+
+- Message de bienvenue
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"greeting",
+  "greeting":{
+    "text":"Bonjour {{user_first_name}} ! Clique sur \"Démarrer\" pour engager la conversation."
+  }
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAABvHLK66ZCQBAFOmsXbgYWdOVvnzbZA1QnASnGx4tV8B4uxkGFeqgcep5ZA6rwuppnKdfpzjvGzK2IZATFlKNkTZAD3PQ3AyRizn4oeFcXzgR9AbmtCYEZAZB1Vy0BYJMk8NMPcGDegH5nIdLLM1ZBSr42KLZBRaOZAwYBqUnZBK6fngZDZD"
+
+
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"persistent_menu":[
+  {
+    "locale":"zh_CN",
+    "composer_input_disabled":false
+  },
+  {
+    "locale":"default",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+      {
+        "type":"postback",
+        "title":"Services de santé proche",
+        "payload":"SERVICE_SANTE_PROCHE_PAYLOAD"
+      },
+      {
+        "type":"postback",
+        "title":"Assistance médicale",
+        "payload":"ASSISTANCE_MEDICALE_PAYLOAD"
+      },
+      {
+        "type":"nested",
+        "title":"Voir plus",
+        "call_to_actions":[
+          {
+            "type":"postback",
+            "title":"Prise de médicament",
+            "payload":"PRISE_MEDICAMENT_PAYLOAD"
+          },
+          {
+            "type":"postback",
+            "title":"Demander conseil",
+            "payload":"DEMANDER_CONSEIL_PAYLOAD"
+          }
+        ]
+      }
+    ]
+  }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAABvHLK66ZCQBAFOmsXbgYWdOVvnzbZA1QnASnGx4tV8B4uxkGFeqgcep5ZA6rwuppnKdfpzjvGzK2IZATFlKNkTZAD3PQ3AyRizn4oeFcXzgR9AbmtCYEZAZB1Vy0BYJMk8NMPcGDegH5nIdLLM1ZBSr42KLZBRaOZAwYBqUnZBK6fngZDZD"
+
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type" : "domain_whitelisting",
+  "whitelisted_domains" : ["https://229proxisante.com"],
+  "domain_action_type": "add"
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAABvHLK66ZCQBAFOmsXbgYWdOVvnzbZA1QnASnGx4tV8B4uxkGFeqgcep5ZA6rwuppnKdfpzjvGzK2IZATFlKNkTZAD3PQ3AyRizn4oeFcXzgR9AbmtCYEZAZB1Vy0BYJMk8NMPcGDegH5nIdLLM1ZBSr42KLZBRaOZAwYBqUnZBK6fngZDZD"
+
+
+- User Info
+
+first_name: 'Oscar',
+last_name: 'Gbadou',
+profile_pic: 'https://scontent.xx.fbcdn.net/v/t1.0-1/15873384_1358324947545700_4597557245491571896_n.jpg?oh=032793a0542cbaf1a32a57fef6ce4b79&oe=59DDAEA5',
+locale: 'fr_FR',
+timezone: 1,
+gender: 'male'
